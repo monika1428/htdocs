@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" data-ng-app="app">
+<head>
+    <title>ngRepeat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css" />
+</head>
+<body data-ng-controller="defaultCtrl">
+<table class="table">
+    <tr data-ng-repeat="mountain in mountainsList" data-ng-class="{info:$even, danger:$odd}">
+        <td class="col-sm-1">{{$index}}</td>
+        <td class="col-sm-4" data-ng-show="!showForms" data-ng-click="showForms=true">{{mountain.mountain}}</td>
+        <td class="col-sm-4" data-ng-show="showForms"><input data-ng-model="mountain.mountain" /></td>
+        <td class="col-sm-4" data-ng-show="!showForms" data-ng-click="showForms=true">{{mountain.metres}}</td>
+        <td class="col-sm-3" data-ng-show="showForms"><input data-ng-model="mountain.metres" /> <a href="#" data-ng-click="saveChanges($index, mountain.mountain, mountain.metres); showForms=false" class="glyphicon glyphicon-ok"> Zapisz</a></td>
+        <td class="col-sm-1"><a href="#" data-ng-click="showForms=true" class="glyphicon glyphicon-pencil"></a></td>
+        <td class="col-sm-1"><a href="#" data-ng-show="!$first" data-ng-click="up($index)" class="glyphicon glyphicon-arrow-up"></a></td>
+        <td class="col-sm-1"><a href="#" data-ng-show="!$last" data-ng-click="down($index)" class="glyphicon glyphicon-arrow-down"></a></td>
+    </tr>
+</table>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://code.angularjs.org/1.3.0-rc.1/angular.js"></script>
+<script>
+        var app = angular.module('app', []);
+        app.controller('defaultCtrl', function ($scope) {
+            $scope.mountainsList = [
+            { mountain: "Mount Everest", metres: 8850 },
+            { mountain: "K2", metres: 8611 },
+            { mountain: "Kangczendzonga", metres: 8598 },
+            { mountain: "Lhotse", metres: 8501 },
+            { mountain: "Makalu", metres: 8463 },
+            { mountain: "Cho Oyu", metres: 8201 }];
+            var drive = function (source, target) {
+                var t = $scope.mountainsList[target];
+                $scope.mountainsList[target] = $scope.mountainsList[source];
+                $scope.mountainsList[source] = t;
+            };
+            $scope.up = function (index) {
+                drive(index, index - 1);
+            };
+            $scope.down = function (index) {
+                drive(index, index + 1);
+            };
+            $scope.saveChanges = function (index, mountain, metres) {
+                $scope.mountainsList[index]= { 'mountain': mountain, 'metres': metres };
+            };
+        });
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+	<head>
+	 <title>Json w Angularze</title>
+	</head>
+	<body>
+		<div ng-controller="defaultCtrl">
+		 	<section ng-repeat="u in users">
+		 		<a href="#show/{{u.name}}"><button ng-click="show=!show">pokaz</button>Main/ {{u.name}}</a><div data-ng-show="show" data-ng-view class='appView'></div><div data-ng-show="show">{{u.age}}</div>
+			</section>
+			<section ng-repeat="u in users">
+				{{ u.name }}
+			</section>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+		<script src='controller.js'></script>
+		<script type="text/javascript">
+		</script>
+	</body>
+</html>

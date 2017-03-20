@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+<head>
+	<title>Angular CRUD</title>
+</head>
+<body>
+	<div data-ng-controller="myCtrl">
+		<section id="productsTable">
+			<table cellpadding="2" cellspacing="2" border="1">
+			 	<tr>
+			 		<th>Id</th>
+			 		<th>Name</th>
+			 		<th>Price</th>
+			 		<th>Quantity</th>
+			 		<th>Options</th>
+			 	</tr>
+				<tr data-ng-repeat="product in products track by $index">
+					<td>{{product.id}}</td>
+					<td>{{product.name}}</td>
+					<td>{{product.price}}</td>
+					<td>{{product.quantity}}</td>
+					<td><a href="#" data-ng-click="del(product.id)">Delete</a> | <a href="#" data-ng-click="edit(product.id)">Edit</td>
+				</tr>
+			</table>
+		</section>
+		<section id="editInputs"  style="margin-top: 5px">
+			<table cellpadding="2" cellspacing="2">
+				<tr><td>Id</td><td><input type="text" data-ng-model="id"></td></tr>
+				<tr><td>Name</td><td><input type="text" data-ng-model="name"></td></tr>
+				<tr><td>Price</td><td><input type="text" data-ng-model="price"></td></tr>
+				<tr><td>Quantity</td><td><input type="text" data-ng-model="quantity"></td></tr>
+				<tr><td></td><td><input type="button" value="Add" data-ng-click="clickAdd()"><input type="button" value="Edit" data-ng-click="clickEdit()"></td></tr>
+			</table>
+		</section>
+	</div>
+	<script src="bower_components\angular\angular.js"></script>
+	<script src="bower_components\angular-resource\angular-resource.js"></script>
+	<script src='crud.js'></script>
+</body>
+</html>
