@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "title": "rrrrrrrr",
+      "author": "rrrrrrrrrr",
+      "id": 14
+    },
+    {
+      "title": "ewewewew",
+      "author": "rrrrrrrrrr",
+      "id": 15
+    },
+    {
+      "title": "autor",
+      "author": "autor",
+      "id": 16
+    },
+    {
+      "title": "a",
+      "author": "a",
+      "id": 17
+    },
+    {
+      "title": "dsds",
+      "author": "dsdsds",
+      "id": 18
+    },
+    {
+      "title": "a",
+      "author": "a",
+      "id": 19
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
